@@ -1,5 +1,6 @@
 import ActiveContestCard from "@/components/Contest/ActiveContestCard";
 import ContestHistory from "@/components/Contest/ContestHistory";
+import GlobalRanking from "@/components/Ranking/GlobalRanking";
 
 export default function Contest() {
   const contests = [
@@ -23,6 +24,7 @@ export default function Contest() {
       </div>
       <div className="flex w-[70%] mx-auto justify-center">
       <ContestHistory />
+      <GlobalRanking/>
       </div>
     </div>
   );
