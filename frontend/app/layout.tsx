@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavigationBar from "@/components/NavigationBar/NavigationBar";
-import { ClerkProvider} from '@clerk/nextjs'
-import { ThemeProvider } from "@/components/ui/theme-provider"
+import { ClerkProvider} from '@clerk/nextjs';
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { dark,neobrutalism } from '@clerk/themes';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark ,
+      signIn: { baseTheme: neobrutalism },
+    }}>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} dark:bg-gradient-to-b from-gray-950 to-black antialiased`}

@@ -12,16 +12,15 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import {motion} from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function NavigationBar() {
   const navLinks = [
-    { linkName: "Home", url: "/" },
     { linkName: "Problems", url: "/problemset" },
     { linkName: "Contest", url: "/contest" },
-    // { linkName: "Discuss", url: "/discuss" },
-    // { linkName: "Store", url: "/store" },
   ];
   const { setTheme, theme } = useTheme();
+  const pathname = usePathname();
 
   const streak = 1;
   return (
@@ -46,12 +45,12 @@ export default function NavigationBar() {
             alt="Logo"
             className="mx-5"
           /> */}
-          <p className=" mx-5 font-bold text-xl">
+          <Link href={"/"} className=" mx-5 font-extrabold text-2xl">
             CodeAscend
-          </p>
+          </Link>
           <SignedIn>
             {navLinks.map((navLink, index) => (
-              <Link key={index} href={navLink.url}>
+              <Link key={index} href={navLink.url} className={`hover:bg-green-400 font-semibold hover:text-black p-2 rounded-md ${pathname===navLink.url?"bg-green-500 text-black":""} `}>
                 {navLink.linkName}
               </Link>
             ))}
@@ -60,7 +59,7 @@ export default function NavigationBar() {
         <div className="flex justify-items-end space-x-5 mx-10">
           <SignedIn>
             <Link href={"/"} className="flex items-center">
-              <Bell className="dark:text-yellow-300 dark:fill-yellow-300 fill-black text-black" />
+              <Bell className="dark:text-yellow-300 dark:fill-yellow-300 fill-yellow-500 text-yellow-500" />
               <p className="text-lg">{""}</p>
             </Link>
             <Link href={"/"} className="flex items-center">
