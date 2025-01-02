@@ -1,8 +1,8 @@
 "use client";
-import Image from "next/image";
-import Logo from "@/public/Code-Ascend-logo.png";
+// import Image from "next/image";
+// import Logo from "@/public/Code-Ascend-logo.png";
 import Link from "next/link";
-import { Bell, CircleUser, Flame, Moon, Sun } from "lucide-react";
+import { Bell, Flame, Moon, Sun } from "lucide-react";
 import { Button } from "../ui/button";
 import { useTheme } from "next-themes";
 import {
@@ -10,13 +10,12 @@ import {
   SignedIn,
   SignedOut,
   UserButton,
-  SignIn,
-  useUser,
 } from "@clerk/nextjs";
+import {motion} from "framer-motion";
 
 export default function NavigationBar() {
   const navLinks = [
-    // { linkName: "Explore", url: "/explore" },
+    { linkName: "Home", url: "/" },
     { linkName: "Problems", url: "/problemset" },
     { linkName: "Contest", url: "/contest" },
     // { linkName: "Discuss", url: "/discuss" },
@@ -27,7 +26,10 @@ export default function NavigationBar() {
   const streak = 1;
   return (
     <nav>
-      <div
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        
         style={{
           background:
             "linear-gradient(271.1deg, rgba(169, 204, 236, 0.2) 37.05%, rgba(90, 125, 154, 0.13) 66.11%)",
@@ -36,7 +38,7 @@ export default function NavigationBar() {
         }}
         className="fixed top-4 min-w-fit lg:min-w-[55%] md:w-[600px] justify-between w-[70%] mx-auto left-4 right-4 bg-transparent text-white shadow-lg h-[80px] rounded-lg flex items-center backdrop-filter backdrop-blur-2xl z-50"
       >
-        <div className="flex space-x-6 items-center">
+        <div className="flex space-x-6 items-center text-black dark:text-white">
           {/* <Image
             src={Logo}
             height={60}
@@ -44,14 +46,16 @@ export default function NavigationBar() {
             alt="Logo"
             className="mx-5"
           /> */}
-          <p className="text-black dark:text-white mx-5 font-bold text-xl">
+          <p className=" mx-5 font-bold text-xl">
             CodeAscend
           </p>
-          {/* {navLinks.map((navLink, index) => (
-            <Link key={index} href={navLink.url}>
-              {navLink.linkName}
-            </Link>
-          ))} */}
+          <SignedIn>
+            {navLinks.map((navLink, index) => (
+              <Link key={index} href={navLink.url}>
+                {navLink.linkName}
+              </Link>
+            ))}
+          </SignedIn>
         </div>
         <div className="flex justify-items-end space-x-5 mx-10">
           <SignedIn>
@@ -98,8 +102,9 @@ export default function NavigationBar() {
           <SignedIn>
             <UserButton />
           </SignedIn>
+
         </div>
-      </div>
+      </motion.div>
     </nav>
   );
 }

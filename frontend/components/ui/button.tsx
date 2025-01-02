@@ -19,7 +19,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         dropdown: "bg-[#616A6B] text-primary-foreground hover:bg-[#616A6B]/80",
-        login: " bg-[#33D93C]/80 text-black font-bold text-lg"
+        login: " bg-green-500 text-black font-bold text-lg drop-shadow-[0_3px_8px_rgba(0,255,0,0.5)]"
       },
       size: {
         default: "h-10 px-4 py-2",

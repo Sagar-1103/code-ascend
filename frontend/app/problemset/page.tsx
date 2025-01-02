@@ -16,7 +16,7 @@ export default function ProblemSet() {
   const [date, setDate] = useState<Date | undefined>(new Date());
 
   return (
-    <div className="bg-[#252525] min-h-screen">
+    <div className="min-h-screen">
       <div className=" w-[70%] mx-auto text-white py-10 flex justify-normal">
         {/* Left  */}
         <div className="w-[70%]">
